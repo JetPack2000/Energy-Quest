@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#102a43">
 <title>Consulting Quest - Situation Deck</title>
 <style>
-:root{--navy:#102a43;--gold:#f2b134;--paper:#f7f3e9;--ink:#17212b;--muted:#65758b;--green:#20d34a;--shadow:0 18px 45px rgba(5,25,45,.24)}
+:root{--navy:#102a43;--gold:#f2b134;--paper:#f7f3e9;--ink:#17212b;--muted:#65758b;--green:#25e65b;--shadow:0 18px 45px rgba(5,25,45,.24)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(145deg,#0b2035,#163b5b);color:var(--ink)}
 body{min-height:100vh;min-height:100svh;padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);display:flex;justify-content:center}
@@ -15,19 +15,21 @@ header{color:#fff;text-align:center;padding:4px 10px 14px}.eyebrow{font-size:.75
 .status{display:flex;justify-content:space-between;gap:10px;margin:4px 0 12px;color:#fff;font-size:.86rem}.status span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.14);padding:8px 11px;border-radius:999px}
 .screen{flex:1;min-height:410px}.hidden{display:none!important}
 .draw-card{width:100%;min-height:410px;border:4px solid rgba(255,255,255,.84);border-radius:24px;background:radial-gradient(circle at 25% 20%,rgba(255,255,255,.14),transparent 30%),linear-gradient(145deg,#173e63,#0d2740);color:#fff;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;cursor:pointer;touch-action:manipulation}
-.draw-card:active{transform:scale(.99)}.crest{width:200px;height:200px;border-radius:50%;border:3px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,.12);box-shadow:inset 0 0 0 8px rgba(255,255,255,.05)}.icon{font-size:3.1rem;line-height:1}.crest strong{font-size:1.35rem;margin-top:10px}.crest small{margin-top:7px;opacity:.82;letter-spacing:.12em;text-transform:uppercase}
-.situation-card{min-height:410px;border:4px solid rgba(255,255,255,.84);border-radius:24px;overflow:hidden;background:var(--paper);box-shadow:var(--shadow);display:flex;flex-direction:column}.role{padding:17px 22px;color:#fff;background:var(--role-color,#1f6feb);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.95rem;display:flex;justify-content:space-between;gap:12px}.number{font-size:.76rem;opacity:.85;white-space:nowrap}.situation{padding:28px 25px 22px;display:flex;flex:1;flex-direction:column;justify-content:center;text-align:center}.label{text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;color:var(--muted);font-weight:800;margin-bottom:14px}.situation p{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.24rem,5.4vw,1.66rem);line-height:1.42;margin:0}.prompt{border-top:1px solid #d8d2c5;padding:15px 22px 18px;text-align:center;color:#526172;font-size:.83rem;line-height:1.35}
-.solved{width:100%;margin-top:14px;border:0;border-radius:16px;padding:18px 14px;min-height:62px;background:var(--green);color:#062b0e;font-size:1.25rem;font-weight:900;box-shadow:0 9px 24px rgba(32,211,74,.32);cursor:pointer;touch-action:manipulation}.solved:active{transform:scale(.99)}
-.footer-actions{display:flex;justify-content:center;margin-top:12px}.link-button{border:0;background:transparent;color:rgba(255,255,255,.75);font-weight:600;font-size:.83rem;padding:9px 12px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-.notice{display:none;background:#fff7d6;color:#543f00;border-radius:14px;padding:14px 16px;margin-bottom:12px;font-size:.9rem;line-height:1.4}.notice.show{display:block}
-@media(max-height:700px){.screen,.draw-card,.situation-card{min-height:340px}.crest{width:165px;height:165px}.situation{padding:20px 22px}.situation p{font-size:1.18rem}header{padding-bottom:8px}}
+.draw-card:active,.solved:active,.continue:active{transform:scale(.99)}.crest{width:200px;height:200px;border-radius:50%;border:3px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,.12);box-shadow:inset 0 0 0 8px rgba(255,255,255,.05)}.icon{font-size:3.1rem;line-height:1}.crest strong{font-size:1.35rem;margin-top:10px}.crest small{margin-top:7px;opacity:.82;letter-spacing:.12em;text-transform:uppercase}
+.flip-stage{perspective:1200px}.flip-card{min-height:410px;transform-style:preserve-3d;transform:rotateY(-90deg);opacity:0}.flip-card.flip-in{animation:flipIn .62s cubic-bezier(.2,.75,.25,1) forwards}@keyframes flipIn{0%{transform:rotateY(-90deg) scale(.96);opacity:0}60%{opacity:1}100%{transform:rotateY(0) scale(1);opacity:1}}
+.situation-card{min-height:410px;border:4px solid rgba(255,255,255,.84);border-radius:24px;overflow:hidden;background:var(--paper);box-shadow:var(--shadow);display:flex;flex-direction:column;backface-visibility:hidden}.role{padding:17px 22px;color:#fff;background:var(--role-color,#1f6feb);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.95rem;display:flex;justify-content:space-between;gap:12px}.number{font-size:.76rem;opacity:.85;white-space:nowrap}.situation{padding:28px 25px 22px;display:flex;flex:1;flex-direction:column;justify-content:center;text-align:center}.label{text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;color:var(--muted);font-weight:800;margin-bottom:14px}.situation p{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.24rem,5.4vw,1.66rem);line-height:1.42;margin:0}.prompt{border-top:1px solid #d8d2c5;padding:15px 22px 18px;text-align:center;color:#526172;font-size:.83rem;line-height:1.35}
+.solved,.continue{width:100%;margin-top:14px;border:0;border-radius:16px;padding:18px 14px;min-height:62px;font-size:1.25rem;font-weight:900;cursor:pointer;touch-action:manipulation}.solved{background:var(--green);color:#062b0e;box-shadow:0 9px 24px rgba(37,230,91,.32)}.continue{background:var(--gold);color:#302000;box-shadow:0 9px 24px rgba(242,177,52,.28)}
+.celebration{min-height:410px;border:4px solid rgba(255,255,255,.84);border-radius:24px;background:radial-gradient(circle at 50% 28%,rgba(255,255,255,.2),transparent 34%),linear-gradient(145deg,#1b496f,#102a43);box-shadow:var(--shadow);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:34px 26px}.burst{font-size:4rem;animation:pop .55s ease-out}@keyframes pop{0%{transform:scale(.35) rotate(-12deg);opacity:0}70%{transform:scale(1.16) rotate(4deg);opacity:1}100%{transform:scale(1) rotate(0)}}.cheer{font-size:clamp(2.2rem,11vw,3.5rem);line-height:1;margin:12px 0 18px;color:#ffe17a}.move-copy{font-size:clamp(1.2rem,5vw,1.55rem);line-height:1.42;max-width:390px;margin:0}.move-copy strong{color:#fff2ad}
+.footer-actions{display:flex;justify-content:center;margin-top:12px}.link-button{border:0;background:transparent;color:rgba(255,255,255,.75);font-weight:600;font-size:.83rem;padding:9px 12px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}.notice{display:none;background:#fff7d6;color:#543f00;border-radius:14px;padding:14px 16px;margin-bottom:12px;font-size:.9rem;line-height:1.4}.notice.show{display:block}
+@media(max-height:700px){.screen,.draw-card,.flip-card,.situation-card,.celebration{min-height:340px}.crest{width:165px;height:165px}.situation{padding:20px 22px}.situation p{font-size:1.18rem}header{padding-bottom:8px}}
+@media(prefers-reduced-motion:reduce){.flip-card.flip-in,.burst{animation:none}.flip-card{transform:none;opacity:1}}
 </style>
 </head>
 <body>
 <main class="app">
 <header><div class="eyebrow">Team Challenge</div><h1>Consulting Quest</h1><p class="subtitle">Digital situation-card deck</p></header>
 <div id="notice" class="notice"></div>
-<div class="status"><span id="remaining">Cards remaining: 20</span><span id="drawn">Solved: 0</span></div>
+<div class="status"><span id="remaining">Cards remaining: 0</span><span id="drawn">Solved: 0</span></div>
 
 <section id="drawScreen" class="screen">
   <button id="drawBtn" class="draw-card" type="button" aria-label="Draw a situation card">
@@ -36,70 +38,71 @@ header{color:#fff;text-align:center;padding:4px 10px 14px}.eyebrow{font-size:.75
 </section>
 
 <section id="cardScreen" class="screen hidden">
-  <article class="situation-card">
-    <div id="role" class="role"><span>Role</span><span id="cardNumber" class="number"></span></div>
-    <div class="situation"><div class="label">Situation</div><p id="text"></p></div>
-    <div class="prompt">Discuss how the named role should respond. When the group agrees, tap Solved!</div>
-  </article>
+  <div class="flip-stage"><div id="flipCard" class="flip-card">
+    <article class="situation-card">
+      <div id="role" class="role"><span>Role</span><span id="cardNumber" class="number"></span></div>
+      <div class="situation"><div class="label">Situation</div><p id="text"></p></div>
+      <div class="prompt">Discuss how the named role should respond. When the group agrees, tap Solved!</div>
+    </article>
+  </div></div>
   <button id="solvedBtn" class="solved" type="button">Solved!</button>
+</section>
+
+<section id="celebrateScreen" class="screen hidden">
+  <div class="celebration">
+    <div class="burst">🎉</div>
+    <h2 id="cheer" class="cheer">Great!</h2>
+    <p class="move-copy">Now move your game piece by the number of spaces shown on your spinner.</p>
+  </div>
+  <button id="continueBtn" class="continue" type="button">Continue</button>
 </section>
 
 <div class="footer-actions"><button id="resetBtn" class="link-button" type="button">Reset and reshuffle deck</button></div>
 </main>
 <script>
-const CARDS = [
-  {role:"BPC", text:"A customer asks whether a promising energy-saving measure is really worth pursuing, but the available analysis is incomplete. How do you help the team make progress without overstating what is known?"},
-  {role:"BPC", text:"The project team keeps focusing on incentive dollars, while a larger operational benefit may matter more to the owner. How do you redirect the conversation?"},
-  {role:"BPC", text:"Two members of the design team want different solutions and both look to you for a recommendation. What do you ask before guiding them toward a decision?"},
-  {role:"BPC", text:"A results meeting is running out of time and the customer has not selected a direction. How do you close the meeting with useful momentum?"},
-  {role:"EEPS", text:"Required owner information is still missing and the project schedule is beginning to tighten. How do you move the request forward without making the process feel bureaucratic?"},
-  {role:"EEPS", text:"A consultant and customer each believe the other person is responsible for the next administrative step. How do you clarify ownership and timing?"},
-  {role:"EEPS", text:"A program requirement surprises the project team late in the process. How do you explain it while protecting confidence in the program and the consulting team?"},
-  {role:"EEPS", text:"Several project records contain conflicting contact and incentive-recipient information. What should you verify, and how should you communicate the correction?"},
-  {role:"MV", text:"The installed equipment does not exactly match the assumptions used during design. How do you determine whether the difference matters and explain the next step?"},
-  {role:"MV", text:"Verification is complete for the current phase, but another team must now lead the next step. How do you communicate the transition while maintaining shared ownership?"},
-  {role:"MV", text:"A customer questions why additional documentation is necessary when the equipment is visibly installed. How do you explain the value of verification?"},
-  {role:"MV", text:"Field conditions make one measurement unreliable. How do you document the limitation and still provide the most useful conclusion possible?"},
-  {role:"Scheduler", text:"The preferred meeting time works for the consultant but excludes a key decision-maker. How do you balance speed with the need for the right people in the room?"},
-  {role:"Scheduler", text:"A meeting has been rescheduled twice and the project is losing momentum. What message would help secure a firm date without sounding inflexible?"},
-  {role:"Scheduler", text:"The team asks for a results meeting before the analysis will be ready. How do you clarify expectations and propose a workable alternative?"},
-  {role:"Scheduler", text:"Several attendees accept the invitation, but no one confirms who has authority to make the needed decision. What should you do before the meeting?"},
-  {role:"Software", text:"A calculation error appears only sometimes, and no one can reproduce it consistently. What information should you request before trying to fix the bug?"},
-  {role:"Software", text:"A requested fix could solve one user's problem but create unexpected effects elsewhere. How do you evaluate the trade-off and communicate the risk?"},
-  {role:"Software", text:"Testing is taking longer than coding because the tool has many edge cases. How do you explain why the QA work is necessary?"},
-  {role:"Software", text:"A tool works well for small projects but slows dramatically with a very large dataset. How do you determine whether to optimize, redesign, or set a practical limit?"}
+const FALLBACK_CARDS = [
+{role:"BPC",text:"A customer asks whether a promising energy-saving measure is really worth pursuing, but the available analysis is incomplete. How do you help the team make progress without overstating what is known?"},
+{role:"BPC",text:"The project team keeps focusing on incentive dollars, while a larger operational benefit may matter more to the owner. How do you redirect the conversation?"},
+{role:"BPC",text:"Two members of the design team want different solutions and both look to you for a recommendation. What do you ask before guiding them toward a decision?"},
+{role:"BPC",text:"A results meeting is running out of time and the customer has not selected a direction. How do you close the meeting with useful momentum?"},
+{role:"EEPS",text:"Required owner information is still missing and the project schedule is beginning to tighten. How do you move the request forward without making the process feel bureaucratic?"},
+{role:"EEPS",text:"A consultant and customer each believe the other person is responsible for the next administrative step. How do you clarify ownership and timing?"},
+{role:"EEPS",text:"A program requirement surprises the project team late in the process. How do you explain it while protecting confidence in the program and the consulting team?"},
+{role:"EEPS",text:"Several project records contain conflicting contact and incentive-recipient information. What should you verify, and how should you communicate the correction?"},
+{role:"MV",text:"The installed equipment does not exactly match the assumptions used during design. How do you determine whether the difference matters and explain the next step?"},
+{role:"MV",text:"Verification is complete for the current phase, but another team must now lead the next step. How do you communicate the transition while maintaining shared ownership?"},
+{role:"MV",text:"A customer questions why additional documentation is necessary when the equipment is visibly installed. How do you explain the value of verification?"},
+{role:"MV",text:"Field conditions make one measurement unreliable. How do you document the limitation and still provide the most useful conclusion possible?"},
+{role:"Scheduler",text:"The preferred meeting time works for the consultant but excludes a key decision-maker. How do you balance speed with the need for the right people in the room?"},
+{role:"Scheduler",text:"A meeting has been rescheduled twice and the project is losing momentum. What message would help secure a firm date without sounding inflexible?"},
+{role:"Scheduler",text:"The team asks for a results meeting before the analysis will be ready. How do you clarify expectations and propose a workable alternative?"},
+{role:"Scheduler",text:"Several attendees accept the invitation, but no one confirms who has authority to make the needed decision. What should you do before the meeting?"},
+{role:"Software",text:"A calculation error appears only sometimes, and no one can reproduce it consistently. What information should you request before trying to fix the bug?"},
+{role:"Software",text:"A requested fix could solve one user's problem but create unexpected effects elsewhere. How do you evaluate the trade-off and communicate the risk?"},
+{role:"Software",text:"Testing is taking longer than coding because the tool has many edge cases. How do you explain why the QA work is necessary?"},
+{role:"Software",text:"A tool works well for small projects but slows dramatically with a very large dataset. How do you determine whether to optimize, redesign, or set a practical limit?"}
 ];
+const CHEERS=["Great!","Fantastic!","Outstanding!","Way to Go!","Excellent!","Nicely Done!","Brilliant!","You Got It!","Terrific!","Well Played!","Superb!","Mission Accomplished!"];
 const ROLE_COLORS={BPC:'#1f6feb',EEPS:'#7c4dbe',MV:'#0f8b8d',Scheduler:'#d97706',Software:'#b4234d'};
-const drawScreen=document.getElementById('drawScreen');
-const cardScreen=document.getElementById('cardScreen');
-const drawBtn=document.getElementById('drawBtn');
-const solvedBtn=document.getElementById('solvedBtn');
-const resetBtn=document.getElementById('resetBtn');
-const roleEl=document.getElementById('role');
-const textEl=document.getElementById('text');
-const cardNumberEl=document.getElementById('cardNumber');
-const remainingEl=document.getElementById('remaining');
-const drawnEl=document.getElementById('drawn');
-const notice=document.getElementById('notice');
-let deck=[];
-let current=null;
-
-function shuffle(items){const a=items.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t;}return a;}
-function safeSave(){try{localStorage.setItem('cqTrialDeckV2',JSON.stringify({deck:deck,current:current}));}catch(e){}}
-function safeRestore(){try{const raw=localStorage.getItem('cqTrialDeckV2');if(!raw)return false;const s=JSON.parse(raw);if(s&&Array.isArray(s.deck)){deck=s.deck;current=s.current||null;return true;}}catch(e){}return false;}
-function updateStatus(){remainingEl.textContent='Cards remaining: '+deck.length;drawnEl.textContent='Solved: '+(CARDS.length-deck.length-(current?1:0));}
-function showDraw(){current=null;cardScreen.classList.add('hidden');drawScreen.classList.remove('hidden');notice.classList.remove('show');updateStatus();safeSave();}
-function showCard(){roleEl.style.setProperty('--role-color',ROLE_COLORS[current.role]||'#1f6feb');roleEl.firstElementChild.textContent=current.role;textEl.textContent=current.text;cardNumberEl.textContent='Card '+(CARDS.length-deck.length)+' of '+CARDS.length;drawScreen.classList.add('hidden');cardScreen.classList.remove('hidden');updateStatus();safeSave();window.scrollTo(0,0);}
+const $=id=>document.getElementById(id);
+const drawScreen=$('drawScreen'),cardScreen=$('cardScreen'),celebrateScreen=$('celebrateScreen');
+const drawBtn=$('drawBtn'),solvedBtn=$('solvedBtn'),continueBtn=$('continueBtn'),resetBtn=$('resetBtn');
+const roleEl=$('role'),textEl=$('text'),cardNumberEl=$('cardNumber'),remainingEl=$('remaining'),drawnEl=$('drawn'),notice=$('notice'),flipCard=$('flipCard'),cheerEl=$('cheer');
+let CARDS=[],deck=[],current=null,solvedCount=0;
+function parseCSV(csv){const rows=[];let row=[],field='',quoted=false;for(let i=0;i<csv.length;i++){const c=csv[i],n=csv[i+1];if(c==='"'&&quoted&&n==='"'){field+='"';i++;}else if(c==='"'){quoted=!quoted;}else if(c===','&&!quoted){row.push(field);field='';}else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&n==='\n')i++;row.push(field);field='';if(row.some(v=>v.trim()))rows.push(row);row=[];}else{field+=c;}}if(field||row.length){row.push(field);if(row.some(v=>v.trim()))rows.push(row);}if(rows.length<2)return[];const headers=rows[0].map(h=>h.trim().toLowerCase());const ri=headers.indexOf('role'),si=headers.indexOf('situation');if(ri<0||si<0)return[];return rows.slice(1).map(r=>({role:(r[ri]||'').trim(),text:(r[si]||'').trim()})).filter(x=>x.role&&x.text);}
+async function loadCards(){try{const r=await fetch('situations.csv',{cache:'no-store'});if(!r.ok)throw new Error();const parsed=parseCSV(await r.text());if(!parsed.length)throw new Error();CARDS=parsed;}catch(e){CARDS=FALLBACK_CARDS.slice();}initialize();}
+function shuffle(items){const a=items.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function safeSave(){try{localStorage.setItem('cqDeckV3',JSON.stringify({deck,current,solvedCount,total:CARDS.length}));}catch(e){}}
+function safeRestore(){try{const s=JSON.parse(localStorage.getItem('cqDeckV3'));if(s&&Array.isArray(s.deck)&&s.total===CARDS.length){deck=s.deck;current=s.current||null;solvedCount=Number(s.solvedCount)||0;return true;}}catch(e){}return false;}
+function updateStatus(){remainingEl.textContent='Cards remaining: '+deck.length;drawnEl.textContent='Solved: '+solvedCount;}
+function showOnly(screen){[drawScreen,cardScreen,celebrateScreen].forEach(x=>x.classList.add('hidden'));screen.classList.remove('hidden');window.scrollTo(0,0);}
+function showDraw(){current=null;notice.classList.remove('show');showOnly(drawScreen);updateStatus();safeSave();}
+function showCard(){roleEl.style.setProperty('--role-color',ROLE_COLORS[current.role]||'#1f6feb');roleEl.firstElementChild.textContent=current.role;textEl.textContent=current.text;cardNumberEl.textContent='Card '+(solvedCount+1)+' of '+CARDS.length;flipCard.classList.remove('flip-in');void flipCard.offsetWidth;flipCard.classList.add('flip-in');showOnly(cardScreen);updateStatus();safeSave();}
 function drawCard(){if(deck.length===0){notice.textContent='The deck is complete. Reset and reshuffle to play again.';notice.classList.add('show');return;}current=deck.pop();showCard();}
-function solveCard(){showDraw();}
-function resetDeck(){if(!window.confirm('Reset the deck and reshuffle all cards?'))return;deck=shuffle(CARDS);current=null;try{localStorage.removeItem('cqTrialDeckV2');}catch(e){}showDraw();}
-
-drawBtn.addEventListener('click',drawCard);
-solvedBtn.addEventListener('click',solveCard);
-resetBtn.addEventListener('click',resetDeck);
-
-if(!safeRestore()){deck=shuffle(CARDS);current=null;}
-if(current){showCard();}else{showDraw();}
+function solveCard(){solvedCount++;current=null;cheerEl.textContent=CHEERS[Math.floor(Math.random()*CHEERS.length)];showOnly(celebrateScreen);updateStatus();safeSave();}
+function resetDeck(){if(!window.confirm('Reset the deck and reshuffle all cards?'))return;deck=shuffle(CARDS);current=null;solvedCount=0;try{localStorage.removeItem('cqDeckV3');}catch(e){}showDraw();}
+function initialize(){if(!safeRestore()){deck=shuffle(CARDS);current=null;solvedCount=0;}if(current)showCard();else showDraw();}
+drawBtn.addEventListener('click',drawCard);solvedBtn.addEventListener('click',solveCard);continueBtn.addEventListener('click',showDraw);resetBtn.addEventListener('click',resetDeck);loadCards();
 </script>
 </body>
 </html>
