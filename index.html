@@ -4,52 +4,97 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#102a43">
-<title>Consulting Quest - Situation Deck</title>
+<title>Energy Quest - Situation Deck</title>
 <style>
-:root{--navy:#102a43;--gold:#f2b134;--paper:#f7f3e9;--ink:#17212b;--muted:#65758b;--green:#25e65b;--shadow:0 18px 45px rgba(5,25,45,.24)}
+:root{
+  --navy:#102a43;--navy2:#173f62;--gold:#f2b134;--paper:#fffdf7;--ink:#17212b;
+  --muted:#64748b;--green:#25e65b;--shadow:0 22px 55px rgba(4,19,34,.3);
+  --ease:cubic-bezier(.2,.75,.2,1)
+}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(145deg,#0b2035,#163b5b);color:var(--ink)}
-body{min-height:100vh;min-height:100svh;padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);display:flex;justify-content:center}
-.app{width:min(100%,520px);min-height:100vh;min-height:100svh;display:flex;flex-direction:column;padding:18px 0 22px}
-header{color:#fff;text-align:center;padding:4px 10px 14px}.eyebrow{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;opacity:.72;font-weight:700}h1{margin:7px 0 3px;font-size:clamp(1.8rem,8vw,2.6rem);line-height:1}.subtitle{margin:0;font-size:.94rem;opacity:.82}
-.status{display:flex;justify-content:space-between;gap:10px;margin:4px 0 12px;color:#fff;font-size:.86rem}.status span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.14);padding:8px 11px;border-radius:999px}
-.screen{flex:1;min-height:410px}.hidden{display:none!important}
-.draw-card{width:100%;min-height:410px;border:4px solid rgba(255,255,255,.84);border-radius:24px;background:radial-gradient(circle at 25% 20%,rgba(255,255,255,.14),transparent 30%),linear-gradient(145deg,#173e63,#0d2740);color:#fff;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;cursor:pointer;touch-action:manipulation}
-.draw-card:active,.solved:active,.continue:active{transform:scale(.99)}.crest{width:200px;height:200px;border-radius:50%;border:3px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,.12);box-shadow:inset 0 0 0 8px rgba(255,255,255,.05)}.icon{font-size:3.1rem;line-height:1}.crest strong{font-size:1.35rem;margin-top:10px}.crest small{margin-top:7px;opacity:.82;letter-spacing:.12em;text-transform:uppercase}
-.flip-stage{perspective:1200px}.flip-card{min-height:410px;transform-style:preserve-3d;transform:rotateY(-90deg);opacity:0}.flip-card.flip-in{animation:flipIn .62s cubic-bezier(.2,.75,.25,1) forwards}@keyframes flipIn{0%{transform:rotateY(-90deg) scale(.96);opacity:0}60%{opacity:1}100%{transform:rotateY(0) scale(1);opacity:1}}
-.situation-card{min-height:410px;border:4px solid rgba(255,255,255,.84);border-radius:24px;overflow:hidden;background:var(--paper);box-shadow:var(--shadow);display:flex;flex-direction:column;backface-visibility:hidden}.role{padding:17px 22px;color:#fff;background:var(--role-color,#1f6feb);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.95rem;display:flex;justify-content:space-between;gap:12px}.number{font-size:.76rem;opacity:.85;white-space:nowrap}.situation{padding:28px 25px 22px;display:flex;flex:1;flex-direction:column;justify-content:center;text-align:center}.label{text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;color:var(--muted);font-weight:800;margin-bottom:14px}.situation p{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.24rem,5.4vw,1.66rem);line-height:1.42;margin:0}.prompt{border-top:1px solid #d8d2c5;padding:15px 22px 18px;text-align:center;color:#526172;font-size:.83rem;line-height:1.35}
-.solved,.continue{width:100%;margin-top:14px;border:0;border-radius:16px;padding:18px 14px;min-height:62px;font-size:1.25rem;font-weight:900;cursor:pointer;touch-action:manipulation}.solved{background:var(--green);color:#062b0e;box-shadow:0 9px 24px rgba(37,230,91,.32)}.continue{background:var(--gold);color:#302000;box-shadow:0 9px 24px rgba(242,177,52,.28)}
-.celebration{min-height:410px;border:4px solid rgba(255,255,255,.84);border-radius:24px;background:radial-gradient(circle at 50% 28%,rgba(255,255,255,.2),transparent 34%),linear-gradient(145deg,#1b496f,#102a43);box-shadow:var(--shadow);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:34px 26px}.burst{font-size:4rem;animation:pop .55s ease-out}@keyframes pop{0%{transform:scale(.35) rotate(-12deg);opacity:0}70%{transform:scale(1.16) rotate(4deg);opacity:1}100%{transform:scale(1) rotate(0)}}.cheer{font-size:clamp(2.2rem,11vw,3.5rem);line-height:1;margin:12px 0 18px;color:#ffe17a}.move-copy{font-size:clamp(1.2rem,5vw,1.55rem);line-height:1.42;max-width:390px;margin:0}.move-copy strong{color:#fff2ad}
-.footer-actions{display:flex;justify-content:center;margin-top:12px}.link-button{border:0;background:transparent;color:rgba(255,255,255,.75);font-weight:600;font-size:.83rem;padding:9px 12px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}.notice{display:none;background:#fff7d6;color:#543f00;border-radius:14px;padding:14px 16px;margin-bottom:12px;font-size:.9rem;line-height:1.4}.notice.show{display:block}
-@media(max-height:700px){.screen,.draw-card,.flip-card,.situation-card,.celebration{min-height:340px}.crest{width:165px;height:165px}.situation{padding:20px 22px}.situation p{font-size:1.18rem}header{padding-bottom:8px}}
-@media(prefers-reduced-motion:reduce){.flip-card.flip-in,.burst{animation:none}.flip-card{transform:none;opacity:1}}
+html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(145deg,#091d30,#163d5d);color:var(--ink)}
+body{min-height:100vh;min-height:100svh;padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);display:flex;justify-content:center;overflow-x:hidden}
+button{font:inherit}
+.app{width:min(100%,520px);min-height:100vh;min-height:100svh;display:flex;flex-direction:column;padding:16px 0 20px}
+header{color:#fff;text-align:center;padding:4px 10px 14px}.eyebrow{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;opacity:.7;font-weight:800}h1{margin:7px 0 2px;font-size:clamp(1.85rem,8vw,2.7rem);line-height:1}.subtitle{margin:0;font-size:.94rem;opacity:.8}
+.screen{flex:1;min-height:430px;display:flex;flex-direction:column;justify-content:center}.hidden{display:none!important}
+.notice{display:none;background:#fff7d6;color:#543f00;border-radius:14px;padding:14px 16px;margin-bottom:12px;font-size:.9rem;line-height:1.4}.notice.show{display:block}
+
+/* Draw screen / card back */
+.deck-stage{perspective:1400px;position:relative;min-height:430px;display:flex;align-items:center;justify-content:center}
+.deck-stage::before,.deck-stage::after{content:"";position:absolute;width:92%;height:94%;border-radius:26px;background:#dfe7ef;box-shadow:0 12px 35px rgba(0,0,0,.18);transition:transform .18s ease}
+.deck-stage::before{transform:translate(7px,8px) rotate(1.2deg);opacity:.7}.deck-stage::after{transform:translate(-6px,4px) rotate(-1deg);opacity:.9}
+.deck-stage.shuffling::before{animation:shuffleLeft .22s ease}.deck-stage.shuffling::after{animation:shuffleRight .22s ease}
+@keyframes shuffleLeft{50%{transform:translate(-20px,4px) rotate(-4deg)}}
+@keyframes shuffleRight{50%{transform:translate(22px,8px) rotate(4deg)}}
+.draw-card{position:relative;z-index:2;width:100%;min-height:410px;border:4px solid rgba(255,255,255,.9);border-radius:26px;background:
+  radial-gradient(circle at 25% 18%,rgba(255,255,255,.14),transparent 28%),
+  repeating-linear-gradient(45deg,rgba(255,255,255,.025) 0 2px,transparent 2px 9px),
+  linear-gradient(145deg,#1b4a70,#0b263e);color:#fff;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;cursor:pointer;touch-action:manipulation;transition:transform .16s ease,box-shadow .16s ease}
+.draw-card:active,.done:active,.continue:active{transform:scale(.985)}
+.crest{width:210px;height:210px;border-radius:50%;border:3px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,.14);box-shadow:inset 0 0 0 9px rgba(255,255,255,.05),0 0 0 1px rgba(255,255,255,.12)}
+.icon{font-size:3.2rem;line-height:1;filter:drop-shadow(0 4px 8px rgba(0,0,0,.25))}.crest strong{font-size:1.42rem;margin-top:10px}.crest small{margin-top:8px;opacity:.8;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+
+/* True 3D flip */
+.flip-stage{perspective:1400px;min-height:430px}.flip-card{position:relative;min-height:410px;transform-style:preserve-3d;transform:rotateY(180deg);transition:transform .72s var(--ease)}
+.flip-card.flipped{transform:rotateY(0)}
+.card-face{position:absolute;inset:0;min-height:410px;border-radius:26px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;box-shadow:var(--shadow)}
+.card-back-mini{transform:rotateY(180deg);border:4px solid rgba(255,255,255,.9);background:
+  radial-gradient(circle at 25% 18%,rgba(255,255,255,.14),transparent 28%),
+  repeating-linear-gradient(45deg,rgba(255,255,255,.025) 0 2px,transparent 2px 9px),
+  linear-gradient(145deg,#1b4a70,#0b263e);display:flex;align-items:center;justify-content:center;color:#fff}
+.card-back-mini .mini-mark{width:150px;height:150px;border-radius:50%;border:3px solid var(--gold);display:grid;place-items:center;font-size:3rem;background:rgba(0,0,0,.12)}
+.situation-card{border:4px solid rgba(255,255,255,.9);background:var(--paper);display:flex;flex-direction:column}
+.role-band{padding:19px 23px;color:#fff;background:var(--role-color,#1f6feb);font-weight:900;letter-spacing:.01em;font-size:1.05rem;box-shadow:inset 0 -1px 0 rgba(0,0,0,.12)}
+.situation{padding:28px 25px 20px;display:flex;flex:1;flex-direction:column;justify-content:center;text-align:center}.label{text-transform:uppercase;letter-spacing:.17em;font-size:.72rem;color:var(--muted);font-weight:900;margin-bottom:14px}.situation p{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.22rem,5.3vw,1.62rem);line-height:1.43;margin:0}
+.prompt{border-top:1px solid #ddd7ca;padding:16px 22px 18px;text-align:center;color:#536273;font-size:.88rem;line-height:1.42;background:#faf7ef}.prompt strong{color:#24364a}
+.done,.continue{width:100%;margin-top:14px;border:0;border-radius:17px;padding:18px 14px;min-height:64px;font-size:1.28rem;font-weight:950;cursor:pointer;touch-action:manipulation;transition:transform .14s ease,filter .14s ease}
+.done{background:linear-gradient(180deg,#3cf26e,#22d957);color:#052b0e;box-shadow:0 10px 26px rgba(37,230,91,.34),inset 0 1px 0 rgba(255,255,255,.55)}
+.done:hover{filter:brightness(1.03)}
+
+/* Celebration */
+.celebration{position:relative;min-height:410px;border:4px solid rgba(255,255,255,.9);border-radius:26px;background:radial-gradient(circle at 50% 26%,rgba(255,255,255,.2),transparent 34%),linear-gradient(145deg,#1d5078,#102a43);box-shadow:var(--shadow);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:34px 26px;overflow:hidden;animation:fadeUp .42s var(--ease)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.burst{font-size:4rem;animation:pop .52s ease-out}@keyframes pop{0%{transform:scale(.35) rotate(-12deg);opacity:0}72%{transform:scale(1.14) rotate(4deg);opacity:1}100%{transform:scale(1)}}
+.cheer{font-size:clamp(2.2rem,11vw,3.6rem);line-height:1;margin:12px 0 22px;color:#ffe17a;text-shadow:0 3px 14px rgba(0,0,0,.25)}
+.move-copy{font-size:clamp(1.22rem,5vw,1.58rem);line-height:1.42;max-width:400px;margin:0;font-weight:700}
+.continue{background:linear-gradient(180deg,#ffd05d,#f2b134);color:#302000;box-shadow:0 10px 26px rgba(242,177,52,.3),inset 0 1px 0 rgba(255,255,255,.65)}
+.confetti{position:absolute;top:-20px;width:10px;height:16px;border-radius:2px;opacity:.95;animation:fall var(--fall,2.4s) linear forwards;transform:translate3d(0,0,0) rotate(0deg)}
+@keyframes fall{to{transform:translate3d(var(--drift,0),470px,0) rotate(720deg);opacity:.2}}
+.footer-actions{display:flex;justify-content:center;margin-top:12px}.link-button{border:0;background:transparent;color:rgba(255,255,255,.72);font-weight:650;font-size:.82rem;padding:9px 12px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media(max-height:720px){.screen,.deck-stage,.flip-stage,.draw-card,.flip-card,.card-face,.celebration{min-height:350px}.crest{width:170px;height:170px}.situation{padding:20px 22px}.situation p{font-size:1.17rem}header{padding-bottom:8px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.flip-card{transform:none}.confetti{display:none}}
 </style>
 </head>
 <body>
 <main class="app">
-<header><div class="eyebrow">Team Challenge</div><h1>Consulting Quest</h1><p class="subtitle">Digital situation-card deck</p></header>
+<header><div class="eyebrow">Team Challenge</div><h1>Energy Quest</h1><p class="subtitle">Digital situation deck</p></header>
 <div id="notice" class="notice"></div>
-<div class="status"><span id="remaining">Cards remaining: 0</span><span id="drawn">Solved: 0</span></div>
 
 <section id="drawScreen" class="screen">
-  <button id="drawBtn" class="draw-card" type="button" aria-label="Draw a situation card">
-    <span class="crest"><span class="icon">🧭</span><strong>Draw Situation</strong><small>Tap to draw</small></span>
-  </button>
+  <div id="deckStage" class="deck-stage">
+    <button id="drawBtn" class="draw-card" type="button" aria-label="Draw a situation card">
+      <span class="crest"><span class="icon">⚡</span><strong>Draw Situation</strong><small>Tap to draw</small></span>
+    </button>
+  </div>
 </section>
 
 <section id="cardScreen" class="screen hidden">
-  <div class="flip-stage"><div id="flipCard" class="flip-card">
-    <article class="situation-card">
-      <div id="role" class="role"><span>Role</span><span id="cardNumber" class="number"></span></div>
-      <div class="situation"><div class="label">Situation</div><p id="text"></p></div>
-      <div class="prompt">Discuss how the named role should respond. When the group agrees, tap Solved!</div>
-    </article>
-  </div></div>
-  <button id="solvedBtn" class="solved" type="button">Solved!</button>
+  <div class="flip-stage">
+    <div id="flipCard" class="flip-card">
+      <div class="card-face card-back-mini"><div class="mini-mark">⚡</div></div>
+      <article id="situationCard" class="card-face situation-card">
+        <div id="roleBand" class="role-band">Role: <span id="roleName"></span></div>
+        <div class="situation"><div class="label">Situation:</div><p id="situationText"></p></div>
+        <div id="discussionPrompt" class="prompt"></div>
+      </article>
+    </div>
+  </div>
+  <button id="doneBtn" class="done" type="button">Done</button>
 </section>
 
 <section id="celebrateScreen" class="screen hidden">
-  <div class="celebration">
+  <div id="celebration" class="celebration">
     <div class="burst">🎉</div>
     <h2 id="cheer" class="cheer">Great!</h2>
     <p class="move-copy">Now move your game piece by the number of spaces shown on your spinner.</p>
@@ -60,49 +105,82 @@ header{color:#fff;text-align:center;padding:4px 10px 14px}.eyebrow{font-size:.75
 <div class="footer-actions"><button id="resetBtn" class="link-button" type="button">Reset and reshuffle deck</button></div>
 </main>
 <script>
-const FALLBACK_CARDS = [
+const FALLBACK_CARDS=[
 {role:"BPC",text:"A customer asks whether a promising energy-saving measure is really worth pursuing, but the available analysis is incomplete. How do you help the team make progress without overstating what is known?"},
 {role:"BPC",text:"The project team keeps focusing on incentive dollars, while a larger operational benefit may matter more to the owner. How do you redirect the conversation?"},
-{role:"BPC",text:"Two members of the design team want different solutions and both look to you for a recommendation. What do you ask before guiding them toward a decision?"},
-{role:"BPC",text:"A results meeting is running out of time and the customer has not selected a direction. How do you close the meeting with useful momentum?"},
 {role:"EEPS",text:"Required owner information is still missing and the project schedule is beginning to tighten. How do you move the request forward without making the process feel bureaucratic?"},
 {role:"EEPS",text:"A consultant and customer each believe the other person is responsible for the next administrative step. How do you clarify ownership and timing?"},
-{role:"EEPS",text:"A program requirement surprises the project team late in the process. How do you explain it while protecting confidence in the program and the consulting team?"},
-{role:"EEPS",text:"Several project records contain conflicting contact and incentive-recipient information. What should you verify, and how should you communicate the correction?"},
 {role:"MV",text:"The installed equipment does not exactly match the assumptions used during design. How do you determine whether the difference matters and explain the next step?"},
-{role:"MV",text:"Verification is complete for the current phase, but another team must now lead the next step. How do you communicate the transition while maintaining shared ownership?"},
-{role:"MV",text:"A customer questions why additional documentation is necessary when the equipment is visibly installed. How do you explain the value of verification?"},
 {role:"MV",text:"Field conditions make one measurement unreliable. How do you document the limitation and still provide the most useful conclusion possible?"},
 {role:"Scheduler",text:"The preferred meeting time works for the consultant but excludes a key decision-maker. How do you balance speed with the need for the right people in the room?"},
 {role:"Scheduler",text:"A meeting has been rescheduled twice and the project is losing momentum. What message would help secure a firm date without sounding inflexible?"},
-{role:"Scheduler",text:"The team asks for a results meeting before the analysis will be ready. How do you clarify expectations and propose a workable alternative?"},
-{role:"Scheduler",text:"Several attendees accept the invitation, but no one confirms who has authority to make the needed decision. What should you do before the meeting?"},
 {role:"Software",text:"A calculation error appears only sometimes, and no one can reproduce it consistently. What information should you request before trying to fix the bug?"},
-{role:"Software",text:"A requested fix could solve one user's problem but create unexpected effects elsewhere. How do you evaluate the trade-off and communicate the risk?"},
-{role:"Software",text:"Testing is taking longer than coding because the tool has many edge cases. How do you explain why the QA work is necessary?"},
-{role:"Software",text:"A tool works well for small projects but slows dramatically with a very large dataset. How do you determine whether to optimize, redesign, or set a practical limit?"}
+{role:"Software",text:"A requested fix could solve one user's problem but create unexpected effects elsewhere. How do you evaluate the trade-off and communicate the risk?"}
 ];
-const CHEERS=["Great!","Fantastic!","Outstanding!","Way to Go!","Excellent!","Nicely Done!","Brilliant!","You Got It!","Terrific!","Well Played!","Superb!","Mission Accomplished!"];
+const CHEERS=["Great!","Fantastic!","Outstanding!","Way to Go!","Excellent!","Nicely Done!","Brilliant!","You Got It!","Terrific!","Well Played!","Superb!","Wonderful!"];
 const ROLE_COLORS={BPC:'#1f6feb',EEPS:'#7c4dbe',MV:'#0f8b8d',Scheduler:'#d97706',Software:'#b4234d'};
+const AUTO_COLORS=['#2563eb','#7c3aed','#0f8b8d','#d97706','#b4234d','#16803a','#c2410c','#475569','#0369a1','#9333ea','#a16207','#0f766e'];
 const $=id=>document.getElementById(id);
 const drawScreen=$('drawScreen'),cardScreen=$('cardScreen'),celebrateScreen=$('celebrateScreen');
-const drawBtn=$('drawBtn'),solvedBtn=$('solvedBtn'),continueBtn=$('continueBtn'),resetBtn=$('resetBtn');
-const roleEl=$('role'),textEl=$('text'),cardNumberEl=$('cardNumber'),remainingEl=$('remaining'),drawnEl=$('drawn'),notice=$('notice'),flipCard=$('flipCard'),cheerEl=$('cheer');
-let CARDS=[],deck=[],current=null,solvedCount=0;
-function parseCSV(csv){const rows=[];let row=[],field='',quoted=false;for(let i=0;i<csv.length;i++){const c=csv[i],n=csv[i+1];if(c==='"'&&quoted&&n==='"'){field+='"';i++;}else if(c==='"'){quoted=!quoted;}else if(c===','&&!quoted){row.push(field);field='';}else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&n==='\n')i++;row.push(field);field='';if(row.some(v=>v.trim()))rows.push(row);row=[];}else{field+=c;}}if(field||row.length){row.push(field);if(row.some(v=>v.trim()))rows.push(row);}if(rows.length<2)return[];const headers=rows[0].map(h=>h.trim().toLowerCase());const ri=headers.indexOf('role'),si=headers.indexOf('situation');if(ri<0||si<0)return[];return rows.slice(1).map(r=>({role:(r[ri]||'').trim(),text:(r[si]||'').trim()})).filter(x=>x.role&&x.text);}
-async function loadCards(){try{const r=await fetch('situations.csv',{cache:'no-store'});if(!r.ok)throw new Error();const parsed=parseCSV(await r.text());if(!parsed.length)throw new Error();CARDS=parsed;}catch(e){CARDS=FALLBACK_CARDS.slice();}initialize();}
+const drawBtn=$('drawBtn'),doneBtn=$('doneBtn'),continueBtn=$('continueBtn'),resetBtn=$('resetBtn');
+const deckStage=$('deckStage'),flipCard=$('flipCard'),roleBand=$('roleBand'),roleName=$('roleName'),situationText=$('situationText'),discussionPrompt=$('discussionPrompt'),notice=$('notice'),cheer=$('cheer'),celebration=$('celebration');
+let CARDS=[],deck=[],current=null;
+
+function parseCSV(csv){
+  const rows=[];let row=[],field='',quoted=false;
+  for(let i=0;i<csv.length;i++){
+    const c=csv[i],n=csv[i+1];
+    if(c==='"'&&quoted&&n==='"'){field+='"';i++;}
+    else if(c==='"'){quoted=!quoted;}
+    else if(c===','&&!quoted){row.push(field);field='';}
+    else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&n==='\n')i++;row.push(field);field='';if(row.some(v=>v.trim()))rows.push(row);row=[];}
+    else{field+=c;}
+  }
+  if(field||row.length){row.push(field);if(row.some(v=>v.trim()))rows.push(row);}
+  if(rows.length<2)return[];
+  const headers=rows[0].map(h=>h.trim().toLowerCase()),ri=headers.indexOf('role'),si=headers.indexOf('situation');
+  if(ri<0||si<0)return[];
+  return rows.slice(1).map(r=>({role:(r[ri]||'').trim(),text:(r[si]||'').trim()})).filter(x=>x.role&&x.text);
+}
+async function loadCards(){
+  try{const r=await fetch('situations.csv',{cache:'no-store'});if(!r.ok)throw new Error();const parsed=parseCSV(await r.text());if(!parsed.length)throw new Error();CARDS=parsed;}
+  catch(e){CARDS=FALLBACK_CARDS.slice();}
+  initialize();
+}
 function shuffle(items){const a=items.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-function safeSave(){try{localStorage.setItem('cqDeckV3',JSON.stringify({deck,current,solvedCount,total:CARDS.length}));}catch(e){}}
-function safeRestore(){try{const s=JSON.parse(localStorage.getItem('cqDeckV3'));if(s&&Array.isArray(s.deck)&&s.total===CARDS.length){deck=s.deck;current=s.current||null;solvedCount=Number(s.solvedCount)||0;return true;}}catch(e){}return false;}
-function updateStatus(){remainingEl.textContent='Cards remaining: '+deck.length;drawnEl.textContent='Solved: '+solvedCount;}
+function roleColor(role){if(ROLE_COLORS[role])return ROLE_COLORS[role];let hash=0;for(const ch of role)hash=((hash<<5)-hash)+ch.charCodeAt(0);return AUTO_COLORS[Math.abs(hash)%AUTO_COLORS.length];}
+function safeSave(){try{localStorage.setItem('energyQuestV5',JSON.stringify({deck,current,total:CARDS.length}));}catch(e){}}
+function safeRestore(){try{const s=JSON.parse(localStorage.getItem('energyQuestV5'));if(s&&Array.isArray(s.deck)&&s.total===CARDS.length){deck=s.deck;current=s.current||null;return true;}}catch(e){}return false;}
 function showOnly(screen){[drawScreen,cardScreen,celebrateScreen].forEach(x=>x.classList.add('hidden'));screen.classList.remove('hidden');window.scrollTo(0,0);}
-function showDraw(){current=null;notice.classList.remove('show');showOnly(drawScreen);updateStatus();safeSave();}
-function showCard(){roleEl.style.setProperty('--role-color',ROLE_COLORS[current.role]||'#1f6feb');roleEl.firstElementChild.textContent=current.role;textEl.textContent=current.text;cardNumberEl.textContent='Card '+(solvedCount+1)+' of '+CARDS.length;flipCard.classList.remove('flip-in');void flipCard.offsetWidth;flipCard.classList.add('flip-in');showOnly(cardScreen);updateStatus();safeSave();}
-function drawCard(){if(deck.length===0){notice.textContent='The deck is complete. Reset and reshuffle to play again.';notice.classList.add('show');return;}current=deck.pop();showCard();}
-function solveCard(){solvedCount++;current=null;cheerEl.textContent=CHEERS[Math.floor(Math.random()*CHEERS.length)];showOnly(celebrateScreen);updateStatus();safeSave();}
-function resetDeck(){if(!window.confirm('Reset the deck and reshuffle all cards?'))return;deck=shuffle(CARDS);current=null;solvedCount=0;try{localStorage.removeItem('cqDeckV3');}catch(e){}showDraw();}
-function initialize(){if(!safeRestore()){deck=shuffle(CARDS);current=null;solvedCount=0;}if(current)showCard();else showDraw();}
-drawBtn.addEventListener('click',drawCard);solvedBtn.addEventListener('click',solveCard);continueBtn.addEventListener('click',showDraw);resetBtn.addEventListener('click',resetDeck);loadCards();
+function showDraw(){current=null;notice.classList.remove('show');showOnly(drawScreen);safeSave();}
+function displayCard(){
+  roleBand.style.setProperty('--role-color',roleColor(current.role));
+  roleName.textContent=current.role;
+  situationText.textContent=current.text;
+  discussionPrompt.innerHTML='Discuss how <strong></strong> might resolve. When the group agrees, tap <strong>Done!</strong>';
+  discussionPrompt.querySelector('strong').textContent=current.role;
+  flipCard.classList.remove('flipped');
+  showOnly(cardScreen);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>flipCard.classList.add('flipped')));
+  safeSave();
+}
+function drawCard(){
+  if(deck.length===0){notice.textContent='All situations have been drawn. Reset and reshuffle the deck to continue.';notice.classList.add('show');return;}
+  deckStage.classList.remove('shuffling');void deckStage.offsetWidth;deckStage.classList.add('shuffling');
+  drawBtn.disabled=true;
+  setTimeout(()=>{current=deck.pop();displayCard();drawBtn.disabled=false;},240);
+}
+function launchConfetti(){
+  celebration.querySelectorAll('.confetti').forEach(x=>x.remove());
+  const colors=['#ffe17a','#25e65b','#63b3ed','#ffffff','#f2b134','#c084fc'];
+  for(let i=0;i<34;i++){
+    const p=document.createElement('span');p.className='confetti';p.style.left=(Math.random()*100)+'%';p.style.background=colors[i%colors.length];p.style.setProperty('--fall',(1.8+Math.random()*1.4)+'s');p.style.setProperty('--drift',((Math.random()-.5)*150)+'px');p.style.animationDelay=(Math.random()*.35)+'s';celebration.appendChild(p);
+  }
+}
+function done(){current=null;cheer.textContent=CHEERS[Math.floor(Math.random()*CHEERS.length)];showOnly(celebrateScreen);launchConfetti();safeSave();}
+function resetDeck(){if(!window.confirm('Reset the deck and reshuffle all situations?'))return;deck=shuffle(CARDS);current=null;try{localStorage.removeItem('energyQuestV5');}catch(e){}showDraw();}
+function initialize(){if(!safeRestore()){deck=shuffle(CARDS);current=null;}if(current)displayCard();else showDraw();}
+drawBtn.addEventListener('click',drawCard);doneBtn.addEventListener('click',done);continueBtn.addEventListener('click',showDraw);resetBtn.addEventListener('click',resetDeck);loadCards();
 </script>
 </body>
 </html>
